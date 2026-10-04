@@ -1,6 +1,8 @@
 const express = require("express");
 const pool = require("./db");
 
+const subjectRoutes = require("./routes/subject.routes");
+
 const app = express();
 
 app.use(express.json());
@@ -10,6 +12,8 @@ app.get("/", (req, res) => {
         message: "Learning App Api"
     });
 });
+
+app.use("/api/subjects", subjectRoutes);
 
 app.get("/api/health", async (req, res) => {
     try {
