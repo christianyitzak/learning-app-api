@@ -8,9 +8,25 @@ const createSubject = async (req, res) => {
         res.status(201).json(result.rows[0]);
     } catch (error) {
         console.error(error);
+        res.status(500).json({
+            message: "Failed to create subject",
+        });
+    };
+};
+
+const getSubject = async (req, res) => {
+    try {
+        const result = await pool.query("SELECT * FROM subjects ORDER BY id ASC");
+        res.status(201).json(result.rows[0]);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            message: "Failed to get subjects",
+        });
     };
 };
 
 module.exports = {
-    createSubject
+    createSubject,
+    getSubject
 };
