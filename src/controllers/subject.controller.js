@@ -14,7 +14,7 @@ const createSubject = async (req, res) => {
     };
 };
 
-const getSubject = async (req, res) => {
+const getSubjects = async (req, res) => {
     try {
         const result = await pool.query("SELECT * FROM subjects ORDER BY id ASC");
         res.status(201).json(result.rows[0]);
@@ -100,7 +100,8 @@ const deleteSubject = async (req, res) => {
 
 module.exports = {
     createSubject,
-    getSubject,
+    getSubjects,
     getSubjectById,
-    updateSubject
+    updateSubject,
+    deleteSubject
 };
